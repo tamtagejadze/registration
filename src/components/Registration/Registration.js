@@ -129,7 +129,7 @@ const Registration = () => {
               {
               formik.errors.phone && <div style={{color :"red"}}>  {formik.errors.phone}</div>
               }              
-              <Button disabled={!(formik.isValid && formik.dirty)}></Button>
+              <Button formik={formik}></Button>
           </form>
           
       </div>

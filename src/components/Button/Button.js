@@ -3,7 +3,7 @@ import { useState } from "react";
 import React from 'react';
 import NotificationVisual from '../NotificationVisual/NotificationVisual'
 
-function Button() {
+function Button({formik}) {
     const [noticationOpen , setNoticationOpen] = useState(false)
     const close = () => setNoticationOpen(false)
     const open = () => setNoticationOpen(true)
@@ -14,6 +14,7 @@ function Button() {
       whileTap = {{scale : 0.9}} 
       className= "create-btn"
       onClick={() => (noticationOpen ? close() : open())}
+      disabled={!formik.dirty || !formik.isValid}
       >
         Create account
       </motion.button>

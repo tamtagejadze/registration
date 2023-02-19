@@ -25,6 +25,10 @@ code {
   margin: 20px auto;
 }
 
+.create-btn:disabled {
+  background-color: #a1a1b0;
+}
+
 .close-Btn{
   margin-top: 30px;
   color: white;
@@ -33,6 +37,7 @@ code {
   border-radius: 10px;
   background-color: rgba(129,199,132,1.0);
   border: none;
+  cursor: pointer;
 }
 
 
