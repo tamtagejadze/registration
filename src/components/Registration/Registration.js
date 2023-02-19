@@ -1,20 +1,26 @@
-import React, { useState } from 'react';
 import { useFormik } from 'formik';
+import Button from '../Button/Button';
 
 const validate = (values, props) => {
   const errors = {};
   if (!values.email) {
     errors.email = 'Required';
   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-    errors.email = 'Invalid email address'; 
+    errors.email = 'Invalid Email Address'; 
   }
   if (!values.password) {
     errors.password = 'Required';
+  } else if (!/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(values.password)) {
+    errors.password = 'Invalid Password'; 
   }
-  if(!values.firstName || values.firstName.length < 2){
+  if(!values.firstName) {
+    errors.firstName = 'Required';
+  } else if (values.firstName.length < 2) {
     errors.firstName = "Invalid First Name "
   } 
-  if(!values.lastName || values.lastName.length < 2){
+  if(!values.lastName) {
+    errors.lastName = 'Required';
+  } else if (values.lastName.length < 2){
     errors.lastName = "Invalid Last Name "
   } 
   if (!values.phone) {
@@ -47,7 +53,10 @@ const Registration = () => {
               </h3>
           </div>
           <form onSubmit={formik.handleSubmit}>
-              <label>Email</label>
+            <div className='div-label'>
+              <label className='label'>Email</label>
+              <span style={{color :"red"}}>*</span>
+            </div>              
               <input
                 type="email"
                 id="email"
@@ -59,7 +68,10 @@ const Registration = () => {
               {
               formik.errors.email && <div style={{color :"red"}}>  {formik.errors.email}</div>
               }
-              <label>Password</label>
+              <div className='div-label'>
+                <label className='label'>Password</label>
+                <span style={{color :"red"}}>*</span>
+              </div>
               <input 
                 type="password"
                 id="password"
@@ -68,10 +80,14 @@ const Registration = () => {
                 value={formik.values.password}
                 placeholder="Password"       
               />
+              <p className='divSignUp-p'>Minimum eight characters, at least one letter and one number</p>
               {
               formik.errors.password && <div style={{color :"red"}}>  {formik.errors.password}</div>
               }
-              <label>First name</label>
+              <div className='div-label'>
+                <label className='label'>First name</label>
+                <span style={{color :"red"}}>*</span>
+              </div>
               <input
                 type="text"
                 id="firstName"
@@ -83,11 +99,14 @@ const Registration = () => {
               {
               formik.errors.firstName && <div style={{color :"red"}}>  {formik.errors.firstName}</div>
               }
-              <label>Last name</label>
+              <div className='div-label'>
+                <label className='label'>Last name</label>
+                <span style={{color :"red"}}>*</span>
+              </div>
               <input
                 type="text"
                 id="lastName"
-                name="firstName"
+                name="lastName"
                 onChange={formik.handleChange}
                 value={formik.values.lastName}
                 placeholder="Last Name"           
@@ -95,7 +114,10 @@ const Registration = () => {
               {
               formik.errors.lastName && <div style={{color :"red"}}>  {formik.errors.lastName}</div>
               }
-              <label>Phone</label>
+              <div className='div-label'>
+                <label className='label'>Phone</label>
+                <span style={{color :"red"}}>*</span>
+              </div>
               <input
                 type="text"
                 id="phone"
@@ -107,7 +129,7 @@ const Registration = () => {
               {
               formik.errors.phone && <div style={{color :"red"}}>  {formik.errors.phone}</div>
               }              
-              <button type="submit">Create account</button>
+              <Button disabled={!(formik.isValid && formik.dirty)}></Button>
           </form>
           
       </div>

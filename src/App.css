@@ -42,30 +42,28 @@
   flex-direction: column;
 }
 
-.divSignUp label {
-  margin-bottom: 5px;
-  font-size: 12px;
-  font-weight: 500;
+.div-label {
+  margin-top: 5px;
 }
 
-.divSignUp input, .divSignUp select {
+.label {  
+  margin-right: 5px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #020e31;
+}
+
+.divSignUp input{
   height: 40px;
   padding-left: 15px;
-  margin-bottom: 20px;
+  margin-top: 5px;
+  margin-bottom: 5px;
   background-color: rgb(231, 226, 226);
   border: none;
   border-radius: 3px;
 } 
 
-.divSignUp button {
-  margin: 15px auto;
-  padding: 15px 25px;
-  border: none;
-  font-size: 16px;
-  background-color: #0000ff;
-  color: white;
-  cursor: pointer;
+.divSignUp-p {
+  color: grey;
+  font-size: 12px;
 }
-
-
-
